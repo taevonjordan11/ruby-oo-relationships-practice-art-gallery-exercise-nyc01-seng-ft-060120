@@ -30,8 +30,9 @@ class Artist
   end
 
   # def self.total_experience
-  #   @@all.sum do |total|
+  #   self.sum do |total|
   #     total.total_experience
+  #   end
   # end
 
   def create_painting(title,price,gallery)
@@ -42,6 +43,19 @@ class Artist
     Donor.all.select do |donor|
       donor.artist == self
     end
+  end
+
+  def donor_names
+    my_donors.map do |donors|
+      donors.name
+    end
+  end
+
+  def total_donated
+    total = my_donors.map do |donors|
+      donors.amount
+    end
+    total.sum
   end
 
 end
