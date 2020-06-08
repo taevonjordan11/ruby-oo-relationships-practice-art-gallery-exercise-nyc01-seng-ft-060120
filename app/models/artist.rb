@@ -38,4 +38,10 @@ class Artist
     Painting.new(title, price, self, gallery)
   end
 
+  def my_donors
+    Donor.all.select do |donor|
+      donor.artist == self
+    end
+  end
+
 end
